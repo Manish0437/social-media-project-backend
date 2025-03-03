@@ -1,0 +1,6 @@
+2025-01-02 22:36:03.290474+05:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "POST" already exists; SQL statement:
+CREATE TABLE post ( id INTEGER PRIMARY KEY AUTO_INCREMENT, user_image VARCHAR(255), username VARCHAR(255), created_at DATETIME, comment TEXT, likes INTEGER ) [42101-232]
+2025-01-02 22:38:05.310774+05:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "POST" already exists; SQL statement:
+CREATE TABLE post ( id INTEGER PRIMARY KEY AUTO_INCREMENT, user_image VARCHAR(255), username VARCHAR(255), created_at DATETIME, comment TEXT, likes INTEGER ) [42101-232]
