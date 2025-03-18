@@ -4,3 +4,9 @@ CREATE TABLE post ( id INTEGER PRIMARY KEY AUTO_INCREMENT, user_image VARCHAR(25
 2025-01-02 22:38:05.310774+05:30 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "POST" already exists; SQL statement:
 CREATE TABLE post ( id INTEGER PRIMARY KEY AUTO_INCREMENT, user_image VARCHAR(255), username VARCHAR(255), created_at DATETIME, comment TEXT, likes INTEGER ) [42101-232]
+2025-03-14 11:07:29.773899+05:30 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "USER_IMAGE CHARACTER VARYING(255)": "'""data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKYAAACmCAMAAABnVgRFAAAAsVBMVEUA... (4552)"; SQL statement:
+insert into post (comment,created_at,likes,user_image,username,id) values (?,?,?,?,?,default) [22001-232]
+2025-03-14 11:09:53.411008+05:30 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "USER_IMAGE CHARACTER VARYING(255)": "'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKYAAACmCAMAAABnVgRFAAAAsVBMVEUAA... (4550)"; SQL statement:
+insert into post (comment,created_at,likes,user_image,username,id) values (?,?,?,?,?,default) [22001-232]

@@ -2,12 +2,18 @@ package com.example.SocialMediaFeed.controller;
 
 import com.example.SocialMediaFeed.model.Post;
 import com.example.SocialMediaFeed.service.PostService;
+import com.example.SocialMediaFeed.repository.PostJpaRepository;
 
 import ch.qos.logback.classic.Logger;
 
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
+// import java.time.format.DateTimeFormatter;
 import java.util.List;
 // import java.util.Optional;
 
@@ -21,6 +27,8 @@ public class PostController {
     
     @Autowired
     private PostService postService;
+    @Autowired
+    private PostJpaRepository postJpaRepository;
 
     @GetMapping
     public List<Post> getAllPosts() {
@@ -33,10 +41,43 @@ public class PostController {
         return posts;
     }
 
+    // @PostMapping
+    // public Post createPost(@RequestBody Post post) {
+    //     return postService.createPost(post);
+    // }
+
+
+
     @PostMapping
-    public Post createPost(@RequestBody Post post) {
-        return postService.createPost(post);
+    public ResponseEntity<Post> createPost(@RequestBody Post postRequest) {
+        try {
+            Post post = new Post();
+            post.setUserName(postRequest.getUserName());
+            post.setUserImage(postRequest.getUserImage());
+            post.setComment(postRequest.getComment());
+            post.setFiles(postRequest.getFiles());
+            post.setLikes(0);
+            
+            // Parse the ISO date format from frontend or use current server time
+            LocalDateTime createdAt;
+            if (postRequest.getCreatedAt() != null) {
+                createdAt = postRequest.getCreatedAt();
+            } else {
+                createdAt = LocalDateTime.now();
+            }
+            post.setCreatedAt(createdAt);
+            
+            Post savedPost = postJpaRepository.save(post);
+            return ResponseEntity.status(HttpStatus.CREATED).body(savedPost);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
+
+
+
+
+
 
     @GetMapping("/{id}")
     public Post getPostById(@PathVariable Long id) {
