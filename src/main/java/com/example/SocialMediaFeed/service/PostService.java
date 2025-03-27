@@ -105,6 +105,10 @@ public class PostService {
     public void deletePost(Long id) {
         postJpaRepository.deleteById(id);
     }
+
+    public List<Post> getPostByUserName(String userName ){
+        return postJpaRepository.findByUserName(userName);
+    }
 }
 
 

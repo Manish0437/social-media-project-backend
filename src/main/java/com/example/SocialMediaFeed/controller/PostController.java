@@ -93,6 +93,21 @@ public class PostController {
     public void deletePost(@PathVariable Long id) {
         postService.deletePost(id);
     }
+
+
+    @GetMapping("/user")
+    public List<Post> getPostsByUserName(@RequestParam String userName) {
+        logger.info("Fetching posts for user: {}", userName);
+        List<Post> posts = postService.getPostByUserName(userName);
+        logger.info("Found {} posts for user {}", posts.size(), userName);
+        return posts;
+    }
+
+//    @GetMapping("/{userName}")
+//    public List<Post> getPostByUserName(@PathVariable String userName){
+//        List<Post> posts = postService.getPostByUserName(userName);
+//        return posts;
+//    }
 }
 
 
