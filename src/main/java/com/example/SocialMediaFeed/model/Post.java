@@ -41,16 +41,26 @@ public class Post {
     @Column(name="likes")
     private Integer likes=0;
 
+
+    @ElementCollection
+    @CollectionTable(
+            name="post_likes",
+            joinColumns = @JoinColumn(name="post_id")
+    )
+    @Column(name="list_of_liked_users")
+    private List<String> listOfLikedUsers=new ArrayList<>();
+
     public Post() {
     }
 
-    public Post(String userImage, String userName, LocalDateTime createdAt, String comment, List<String> files, Integer likes) {
+    public Post(String userImage, String userName, LocalDateTime createdAt, String comment, List<String> files, Integer likes,List<String> listOfLikedUsers) {
         this.userImage = userImage;
         this.userName = userName;
         this.createdAt = createdAt;
         this.comment = comment;
         this.files = files;
         this.likes = likes;
+        this.listOfLikedUsers=listOfLikedUsers;
     }
 
     public Long getId() {
@@ -146,4 +156,8 @@ public class Post {
             return "over a week ago";
         }
     }
+
+    public List<String> getListOfLikedUsers(){return listOfLikedUsers;}
+
+    public void setListOfLikedUsers(List<String> listOfLikedUsers){this.listOfLikedUsers= listOfLikedUsers;}
 }

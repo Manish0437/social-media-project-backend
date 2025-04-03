@@ -56,6 +56,9 @@ public class PostService {
             existingPost.setLikes(post.getLikes());
         }
 
+        if (post.getListOfLikedUsers() != null) {
+            existingPost.setListOfLikedUsers(post.getListOfLikedUsers());
+        }
         // Save and return the updated post
         return postJpaRepository.save(existingPost);
     }
