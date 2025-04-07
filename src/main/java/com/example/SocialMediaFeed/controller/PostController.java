@@ -7,6 +7,7 @@ import com.example.SocialMediaFeed.repository.PostJpaRepository;
 import ch.qos.logback.classic.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,9 +21,16 @@ import org.springframework.data.domain.PageRequest;
 
 @RestController
 @RequestMapping("/api/posts")
+
+
+//@CrossOrigin(origins = "${process.env.FRONTEND_URL}")
+//@CrossOrigin(origins = "${frontend.url}")
 @CrossOrigin(origins = "http://localhost:3000")
 public class PostController {
 
+
+//    @Value("${frontend.url}")
+//    private String frontendUrl;
     private static final Logger logger = (Logger) LoggerFactory.getLogger(PostController.class);
 
     @Autowired

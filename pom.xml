@@ -65,11 +65,19 @@
             <version>2.2</version>
         </dependency>
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
             <version>8.0.33</version>
         </dependency>
     </dependencies>
+
+
+    <repositories>
+        <repository>
+            <id>mysql</id>
+            <url>https://repo.mysql.com/maven</url>
+        </repository>
+    </repositories>
 
     <build>
         <plugins>

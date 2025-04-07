@@ -7,6 +7,7 @@ import com.example.SocialMediaFeed.service.ProfileService;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,8 +19,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
 @RequestMapping("/api/profile")
-@CrossOrigin(origins = "http://localhost:3000")
+
+//@CrossOrigin(origins = "${process.env.FRONTEND_URL}")
+@CrossOrigin(origins = "${frontend.url}")
+//@CrossOrigin(origins = "http://localhost:3000")
 public class ProfileController {
+
+    @Value("${frontend.url}")
+    private String frontendUrl;
 
     @Autowired
     private ProfileService profileService;
