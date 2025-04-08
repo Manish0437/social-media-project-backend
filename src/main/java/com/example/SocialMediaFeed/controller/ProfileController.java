@@ -25,8 +25,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 //@CrossOrigin(origins = "http://localhost:3000")
 public class ProfileController {
 
-    @Value("${frontend.url}")
-    private String frontendUrl;
+//    @Value("${frontend.url}")
+//    private String frontendUrl;
 
     @Autowired
     private ProfileService profileService;

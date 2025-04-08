@@ -24,8 +24,8 @@ import org.springframework.data.domain.PageRequest;
 
 
 //@CrossOrigin(origins = "${process.env.FRONTEND_URL}")
-//@CrossOrigin(origins = "${frontend.url}")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "${frontend.url}")
+//@CrossOrigin(origins = "http://localhost:3000")
 public class PostController {
 
 
