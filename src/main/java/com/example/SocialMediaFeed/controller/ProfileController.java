@@ -20,13 +20,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 @RestController
 @RequestMapping("/api/profile")
 
-//@CrossOrigin(origins = "${process.env.FRONTEND_URL}")
-@CrossOrigin(origins = "${frontend.url}")
-//@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "${frontend.url}")
 public class ProfileController {
 
-//    @Value("${frontend.url}")
-//    private String frontendUrl;
 
     @Autowired
     private ProfileService profileService;

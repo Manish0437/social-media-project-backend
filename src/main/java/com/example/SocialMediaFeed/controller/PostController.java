@@ -23,14 +23,9 @@ import org.springframework.data.domain.PageRequest;
 @RequestMapping("/api/posts")
 
 
-//@CrossOrigin(origins = "${process.env.FRONTEND_URL}")
-@CrossOrigin(origins = "${frontend.url}")
-//@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "${frontend.url}")
 public class PostController {
 
-
-//    @Value("${frontend.url}")
-//    private String frontendUrl;
     private static final Logger logger = (Logger) LoggerFactory.getLogger(PostController.class);
 
     @Autowired
@@ -60,6 +55,52 @@ public class PostController {
     }
 
     // Endpoint to create a new post
+//    @PostMapping
+//    public ResponseEntity<Post> createPost(@RequestBody Post postRequest) {
+//        try {
+//            Post post = new Post();
+//            post.setUserName(postRequest.getUserName());
+//            post.setUserImage(postRequest.getUserImage());
+//            post.setComment(postRequest.getComment());
+//            post.setFiles(postRequest.getFiles());
+//            post.setLikes(0);
+//
+//            // Parse the ISO date format from frontend or use current server time
+//            LocalDateTime createdAt;
+//            if (postRequest.getCreatedAt() != null) {
+//                createdAt = postRequest.getCreatedAt();
+//            } else {
+//                createdAt = LocalDateTime.now();
+//            }
+//            post.setCreatedAt(createdAt);
+//
+//            Post savedPost = postJpaRepository.save(post);
+//            return ResponseEntity.status(HttpStatus.CREATED).body(savedPost);
+//        } catch (Exception e) {
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+//        }
+//    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // Endpoint to create a new post
+
     @PostMapping
     public ResponseEntity<Post> createPost(@RequestBody Post postRequest) {
         try {
@@ -69,7 +110,6 @@ public class PostController {
             post.setComment(postRequest.getComment());
             post.setFiles(postRequest.getFiles());
             post.setLikes(0);
-
             // Parse the ISO date format from frontend or use current server time
             LocalDateTime createdAt;
             if (postRequest.getCreatedAt() != null) {
@@ -78,13 +118,23 @@ public class PostController {
                 createdAt = LocalDateTime.now();
             }
             post.setCreatedAt(createdAt);
-
             Post savedPost = postJpaRepository.save(post);
             return ResponseEntity.status(HttpStatus.CREATED).body(savedPost);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+
+
+
+
+
+
+
+
+
+
+
 
     // Endpoint to get a post by ID
     @GetMapping("/{id}")
